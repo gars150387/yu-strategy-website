@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Estrategia de YouTube para emprendedores, expertos y negocios. Posicionamiento, avatar, nicho, contenido, monetización y crecimiento como sistema de negocio." />
+  <title>YT Business Studio — YouTube como negocio</title>
+  <style>
+    :root {
+      --bg: #07120f;
+      --panel: #0c1c17;
+      --panel-2: #10261f;
+      --text: #f4f6f2;
+      --muted: #a9b8b2;
+      --line: rgba(255, 255, 255, .10);
+      --accent: #b9f24a;
+      --accent-2: #75d8b2;
+      --dark: #06100d;
+      --max: 1180px;
+      --radius: 24px;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .28)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 20% 0%, rgba(117, 216, 178, .08), transparent 32rem), radial-gradient(circle at 85% 10%, rgba(185, 242, 74, .07), transparent 28rem), var(--bg);
+      line-height: 1.55
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button,
+    input,
+    select {
+      font: inherit
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: auto
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 20px var(--accent)
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 18, 15, .78);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: -.04em;
+      font-size: 1.08rem
+    }
+
+    .brand span {
+      color: var(--accent)
+    }
+
+    .links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: .92rem
+    }
+
+    .links a:hover {
+      color: var(--text)
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 800;
+      border: 1px solid var(--line);
+      transition: .2s ease;
+      cursor: pointer
+    }
+
+    .btn:hover {
+      transform: translateY(-1px)
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--dark);
+      border-color: var(--accent)
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, .04)
+    }
+
+    .hero {
+      padding: 100px 0 64px
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 60px;
+      align-items: center
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      letter-spacing: -.045em;
+      line-height: 1.02
+    }
+
+    h1 {
+      font-size: clamp(3.25rem, 7vw, 6.8rem);
+      max-width: 850px
+    }
+
+    h2 {
+      font-size: clamp(2.3rem, 4.5vw, 4.2rem)
+    }
+
+    h3 {
+      font-size: 1.25rem
+    }
+
+    .hero-copy p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin: 26px 0 30px
+    }
+
+    .hero-copy strong {
+      color: var(--text)
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    .micro-proof {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: .9rem
+    }
+
+    .micro-proof span {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .check {
+      color: var(--accent)
+    }
+
+    .hero-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden
+    }
+
+    .hero-card:before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(185, 242, 74, .08);
+      filter: blur(10px);
+      right: -110px;
+      top: -100px
+    }
+
+    .strategy-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px
+    }
+
+    .badge {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(185, 242, 74, .10);
+      color: var(--accent);
+      font-size: .76rem;
+      font-weight: 800
+    }
+
+    .flow {
+      display: grid;
+      gap: 11px
+    }
+
+    .flow-item {
+      display: grid;
+      grid-template-columns: 38px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .035);
+      border: 1px solid var(--line)
+    }
+
+    .num {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--panel-2);
+      font-weight: 900;
+      color: var(--accent)
+    }
+
+    .flow-item small {
+      display: block;
+      color: var(--muted);
+      margin-top: 3px
+    }
+
+    .arrow {
+      color: var(--muted)
+    }
+
+    .strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0;
+      margin-top: 30px;
+      overflow: hidden
+    }
+
+    .ticker {
+      width: 100%;
+      overflow: hidden
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      gap: 38px;
+      color: #dfe8e3;
+      font-weight: 750;
+      font-size: .88rem;
+      white-space: nowrap;
+      animation: ticker 22s linear infinite
+    }
+
+    .ticker-track span {
+      flex: 0 0 auto
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(calc(-50% - 19px))
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .ticker-track {
+        animation: none
+      }
+    }
+
+    section {
+      padding: 92px 0
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 50px;
+      align-items: end;
+      margin-bottom: 46px
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0
+    }
+
+    .belief-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px
+    }
+
+    .belief {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: rgba(255, 255, 255, .025)
+    }
+
+    .belief.old {
+      opacity: .72
+    }
+
+    .belief.new {
+      background: linear-gradient(180deg, rgba(185, 242, 74, .07), rgba(255, 255, 255, .025))
+    }
+
+    .belief .label {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 900;
+      color: var(--muted)
+    }
+
+    .belief.new .label {
+      color: var(--accent)
+    }
+
+    .belief p {
+      font-size: clamp(1.35rem, 2.6vw, 2.15rem);
+      letter-spacing: -.035em;
+      line-height: 1.13;
+      margin: 18px 0 0
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      background: var(--panel)
+    }
+
+    .step .kicker {
+      font-weight: 900;
+      color: var(--accent);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .1em
+    }
+
+    .step h3 {
+      margin: 12px 0 10px
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .94rem
+    }
+
+    .blueprint {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 44px;
+      align-items: start
+    }
+
+    .blueprint-list {
+      display: grid;
+      gap: 10px
+    }
+
+    .bp-row {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .025)
+    }
+
+    .bp-row b {
+      display: block;
+      margin-bottom: 4px
+    }
+
+    .bp-row span {
+      color: var(--muted);
+      font-size: .92rem
+    }
+
+    .bp-index {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(117, 216, 178, .12);
+      color: var(--accent-2);
+      font-weight: 900
+    }
+
+    .quote-card {
+      position: sticky;
+      top: 100px;
+      border-radius: 28px;
+      padding: 34px;
+      background: var(--accent);
+      color: var(--dark)
+    }
+
+    .quote-card blockquote {
+      font-size: 2rem;
+      letter-spacing: -.045em;
+      line-height: 1.08;
+      margin: 0 0 24px;
+      font-weight: 900
+    }
+
+    .quote-card p {
+      margin: 0;
+      opacity: .74
+    }
+
+    .niche-tree {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      align-items: stretch
+    }
+
+    .niche-node {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      background: rgba(255, 255, 255, .028)
+    }
+
+    .niche-node small {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 800;
+      margin-bottom: 10px
+    }
+
+    .niche-node b {
+      font-size: 1.05rem
+    }
+
+    .niche-node.accent {
+      border-color: rgba(185, 242, 74, .45);
+      background: rgba(185, 242, 74, .07)
+    }
+
+    .models {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px
+    }
+
+    .model {
+      min-height: 190px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--panel)
+    }
+
+    .model p {
+      color: var(--muted);
+      font-size: .91rem
+    }
+
+    .engine {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px
+    }
+
+    .engine-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      background: var(--panel)
+    }
+
+    .engine-card ul {
+      padding: 0;
+      margin: 18px 0 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: var(--muted)
+    }
+
+    .engine-card li:before {
+      content: "→";
+      color: var(--accent);
+      margin-right: 10px
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .service {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .025)
+    }
+
+    .service.featured {
+      background: linear-gradient(180deg, rgba(117, 216, 178, .10), rgba(255, 255, 255, .025));
+      border-color: rgba(117, 216, 178, .35)
+    }
+
+    .service .price {
+      margin-top: 28px;
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: -.03em
+    }
+
+    .service p,
+    .service li {
+      color: var(--muted)
+    }
+
+    .service ul {
+      padding-left: 18px
+    }
+
+    .whatsapp-cta {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 30px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 38px;
+      background: radial-gradient(circle at 15% 0%, rgba(37, 211, 102, .14), transparent 22rem), linear-gradient(135deg, rgba(185, 242, 74, .08), rgba(117, 216, 178, .04))
+    }
+
+    .whatsapp-cta p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0
+    }
+
+    .whatsapp-card {
+      border: 1px solid rgba(37, 211, 102, .28);
+      border-radius: 24px;
+      padding: 28px;
+      background: rgba(255, 255, 255, .035)
+    }
+
+    .whatsapp-card h3 {
+      margin-bottom: 12px
+    }
+
+    .whatsapp-card p {
+      margin-bottom: 22px
+    }
+
+    .audit {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 38px;
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 30px;
+      background: linear-gradient(135deg, rgba(185, 242, 74, .08), rgba(117, 216, 178, .04))
+    }
+
+    .audit-form {
+      display: grid;
+      gap: 12px
+    }
+
+    .field {
+      display: grid;
+      gap: 7px
+    }
+
+    .field label {
+      font-size: .82rem;
+      color: var(--muted);
+      font-weight: 800
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      background: #081713;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 13px 14px;
+      outline: none
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: rgba(185, 242, 74, .6)
+    }
+
+    .result {
+      display: none;
+      margin-top: 14px;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(185, 242, 74, .08);
+      border: 1px solid rgba(185, 242, 74, .25)
+    }
+
+    .result.show {
+      display: block
+    }
+
+    .faq {
+      max-width: 900px;
+      margin: auto
+    }
+
+    details.faq-item {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0
+    }
+
+    details.faq-item summary {
+      cursor: pointer;
+      font-weight: 850;
+      font-size: 1.05rem
+    }
+
+    details.faq-item p {
+      color: var(--muted)
+    }
+
+    .final-cta {
+      text-align: center;
+      padding: 110px 0
+    }
+
+    .final-cta h2 {
+      max-width: 850px;
+      margin: auto
+    }
+
+    .final-cta p {
+      max-width: 660px;
+      margin: 22px auto 28px;
+      color: var(--muted);
+      font-size: 1.08rem
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 0;
+      color: var(--muted);
+      font-size: .88rem
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: .55s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    @media(max-width:980px) {
+
+      .hero-grid,
+      .section-head,
+      .blueprint,
+      .audit,
+      .whatsapp-cta {
+        grid-template-columns: 1fr
+      }
+
+      .steps,
+      .models {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .niche-tree {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr
+      }
+
+      .quote-card {
+        position: relative;
+        top: 0
+      }
+
+      .links {
+        display: none
+      }
+    }
+
+    @media(max-width:640px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 26px))
+      }
+
+      .hero {
+        padding-top: 70px
+      }
+
+      h1 {
+        font-size: clamp(3rem, 16vw, 4.7rem)
+      }
+
+      .belief-grid,
+      .engine,
+      .steps,
+      .models,
+      .niche-tree {
+        grid-template-columns: 1fr
+      }
+
+      .nav-inner .btn {
+        display: none
+      }
+
+      section {
+        padding: 72px 0
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="wrap nav-inner"><a class="brand" href="#inicio">YT <span>Business</span> Studio</a>
+      <div class="links"><a href="#metodologia">Método</a><a href="#nicho">Nicho</a><a
+          href="#monetizacion">Monetización</a><a href="#servicios">Servicios</a><a href="#whatsapp">WhatsApp</a></div>
+      <a class="btn btn-primary" href="#diagnostico">Diagnosticar mi canal</a>
+    </div>
+  </nav>
+  <main id="inicio">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="dot"></span> YouTube Business Strategy</div>
+          <h1>No necesitas más views. Necesitas un <span style="color:var(--accent)">negocio.</span></h1>
+          <p>Ayudamos a <strong>emprendedores, expertos y negocios</strong> a descubrir qué deben representar, a quién
+            deben atraer, qué deben vender y cómo convertir YouTube en un sistema de <strong>autoridad, adquisición y
+              monetización</strong>.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#diagnostico">Descubrir mi estrategia</a><a
+              class="btn btn-secondary" href="#metodologia">Ver cómo trabajamos ↓</a></div>
+          <div class="micro-proof"><span><b class="check">✓</b> Posicionamiento</span><span><b class="check">✓</b>
+              Avatar</span><span><b class="check">✓</b> Nicho</span><span><b class="check">✓</b> Oferta</span><span><b
+                class="check">✓</b> Contenido</span></div>
+        </div>
+        <div class="hero-card reveal">
+          <div class="strategy-head">
+            <div><small style="color:var(--muted)">YouTube Business Blueprint</small>
+              <h3 style="margin-top:6px">Antes de publicar, define esto.</h3>
+            </div><span class="badge">01 → 06</span>
+          </div>
+          <div class="flow">
+            <div class="flow-item"><span class="num">01</span>
+              <div><b>Identidad</b><small>¿Quién eres y por qué escucharte?</small></div><span class="arrow">→</span>
+            </div>
+            <div class="flow-item"><span class="num">02</span>
+              <div><b>Problema</b><small>¿Qué transformación produces?</small></div><span class="arrow">→</span>
+            </div>
+            <div class="flow-item"><span class="num">03</span>
+              <div><b>Avatar</b><small>¿Quién necesita esa transformación?</small></div><span class="arrow">→</span>
+            </div>
+            <div class="flow-item"><span class="num">04</span>
+              <div><b>Nicho</b><small>¿En qué mercado compites?</small></div><span class="arrow">→</span>
+            </div>
+            <div class="flow-item"><span class="num">05</span>
+              <div><b>Oferta</b><small>¿Qué vendes y por qué ahora?</small></div><span class="arrow">→</span>
+            </div>
+            <div class="flow-item"><span class="num">06</span>
+              <div><b>Contenido</b><small>¿Qué debe hacer cada video?</small></div><span class="arrow">✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="strip" aria-label="Áreas estratégicas">
+        <div class="ticker">
+          <div class="ticker-track">
+            <span>DESCUBRIMIENTO</span><span>AUTORIDAD</span><span>RECURRENCIA</span><span>LEADS</span><span>VENTAS</span><span>ACTIVOS
+              DIGITALES</span><span>DESCUBRIMIENTO</span><span>AUTORIDAD</span><span>RECURRENCIA</span><span>LEADS</span><span>VENTAS</span><span>ACTIVOS
+              DIGITALES</span><span>DESCUBRIMIENTO</span><span>AUTORIDAD</span><span>RECURRENCIA</span><span>LEADS</span><span>VENTAS</span><span>ACTIVOS
+              DIGITALES</span><span>DESCUBRIMIENTO</span><span>AUTORIDAD</span><span>RECURRENCIA</span><span>LEADS</span><span>VENTAS</span><span>ACTIVOS
+              DIGITALES</span></div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Nuestra tesis</div>
+            <h2>Creator thinking vs. business thinking.</h2>
+          </div>
+          <p>Una marca orientada a negocio no optimiza simplemente para alcance. Optimiza para confianza, relevancia,
+            intención y oportunidades. El objetivo no es que te vea todo el mundo: es que las personas correctas
+            entiendan por qué tú puedes ayudarlas.</p>
+        </div>
+        <div class="belief-grid">
+          <div class="belief old reveal">
+            <div class="label">Lo que suele decir el mercado</div>
+            <p>“Necesitas hacerte viral, publicar más y conseguir seguidores.”</p>
+          </div>
+          <div class="belief new reveal">
+            <div class="label">Nuestra posición</div>
+            <p>“Necesitas construir confianza con la audiencia correcta y conectar contenido con negocio.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="metodologia">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Brand Journey</div>
+            <h2>Trabajamos desde el resultado hacia atrás.</h2>
+          </div>
+          <p>Cada iniciativa debe poder conectarse con una cadena simple: <strong style="color:var(--text)">Aprender →
+              Hacer → Ser conocido por → Resultado deseado.</strong> Si una pieza de contenido no contribuye a esa
+            cadena, probablemente no es prioritaria.</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal">
+            <div class="kicker">01 · Desired Outcome</div>
+            <h3>Resultado</h3>
+            <p>Qué quieres conseguir en 12–36 meses y qué papel debe jugar YouTube.</p>
+          </article>
+          <article class="step reveal">
+            <div class="kicker">02 · Known For</div>
+            <h3>Posicionamiento</h3>
+            <p>De qué necesitas ser conocido para que el resultado sea más probable.</p>
+          </article>
+          <article class="step reveal">
+            <div class="kicker">03 · Do</div>
+            <h3>Acciones</h3>
+            <p>Qué necesitas demostrar, publicar, analizar y explicar consistentemente.</p>
+          </article>
+          <article class="step reveal">
+            <div class="kicker">04 · Learn</div>
+            <h3>Capacidades</h3>
+            <p>Qué necesitas aprender sobre contenido, cámara, storytelling, datos y producción.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap blueprint">
+        <div>
+          <div class="eyebrow">YouTube Business Blueprint</div>
+          <h2 style="margin:12px 0 28px">Antes de pensar en miniaturas, entendemos el negocio.</h2>
+          <div class="blueprint-list">
+            <div class="bp-row reveal">
+              <div class="bp-index">01</div>
+              <div><b>¿Quién eres?</b><span>Experiencia, Credibility Bank, Interest Bank, ventajas y temas
+                  sostenibles.</span></div>
+            </div>
+            <div class="bp-row reveal">
+              <div class="bp-index">02</div>
+              <div><b>¿Qué problema solucionas?</b><span>Pasamos de “crear contenido” a identificar dolores concretos de
+                  negocio.</span></div>
+            </div>
+            <div class="bp-row reveal">
+              <div class="bp-index">03</div>
+              <div><b>¿Quién es tu avatar?</b><span>Deseos, frustraciones, miedos, intentos actuales, objeciones y
+                  disparadores de compra.</span></div>
+            </div>
+            <div class="bp-row reveal">
+              <div class="bp-index">04</div>
+              <div><b>¿Por qué deberían verte?</b><span>Construimos una promesa editorial que una persona pueda
+                  reconocer como “esto es para mí”.</span></div>
+            </div>
+            <div class="bp-row reveal">
+              <div class="bp-index">05</div>
+              <div><b>¿Qué vendes?</b><span>Consultoría, servicios, SaaS, educación, ecommerce, afiliación, comunidad o
+                  atención.</span></div>
+            </div>
+            <div class="bp-row reveal">
+              <div class="bp-index">06</div>
+              <div><b>¿Qué función cumple cada video?</b><span>Descubrimiento, autoridad, conversión o recurrencia. No
+                  todos los videos necesitan el mismo KPI.</span></div>
+            </div>
+          </div>
+        </div>
+        <aside class="quote-card reveal">
+          <blockquote>“Un canal de YouTube debe gestionarse como una propiedad digital y una empresa de medios, no como
+            un feed de publicaciones.”</blockquote>
+          <p>El catálogo importa. Un buen video puede seguir generando descubrimiento, autoridad, leads y ventas durante
+            meses o años.</p>
+        </aside>
+      </div>
+    </section>
+    <section id="nicho">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Arquitectura del mercado</div>
+            <h2>No elegimos “un tema”. Elegimos dónde competir.</h2>
+          </div>
+          <p>El nicho no es una cárcel. Es una herramienta para alinear mercado, audiencia, problema, oferta y
+            contenido. Después ampliamos el Total Addressable Market sin perder el core.</p>
+        </div>
+        <div class="niche-tree reveal">
+          <div class="niche-node"><small>Mercado</small><b>Marketing</b></div>
+          <div class="niche-node"><small>Macro nicho</small><b>Marketing de contenidos</b></div>
+          <div class="niche-node"><small>Micro nicho</small><b>YouTube</b></div>
+          <div class="niche-node"><small>Subnicho</small><b>YouTube para negocios</b></div>
+          <div class="niche-node accent"><small>Avatar</small><b>Expertos y emprendedores</b></div>
+          <div class="niche-node accent"><small>Problema</small><b>Convertir conocimiento en demanda</b></div>
+        </div>
+      </div>
+    </section>
+    <section id="monetizacion">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Modelos de negocio</div>
+            <h2>La monetización define qué canal deberías construir.</h2>
+          </div>
+          <p>Un canal diseñado para AdSense no se construye igual que uno diseñado para vender una consultoría de
+            €5.000. Primero definimos el modelo económico; luego el sistema editorial.</p>
+        </div>
+        <div class="models">
+          <article class="model reveal">
+            <h3>Consultoría</h3>
+            <p>YouTube crea autoridad, educa al prospecto y genera conversaciones comerciales.</p>
+          </article>
+          <article class="model reveal">
+            <h3>Agencia</h3>
+            <p>Contenido que demuestra criterio, procesos, auditorías y casos para atraer leads cualificados.</p>
+          </article>
+          <article class="model reveal">
+            <h3>SaaS</h3>
+            <p>Educación + búsqueda + casos de uso para reducir fricción y convertir demanda existente.</p>
+          </article>
+          <article class="model reveal">
+            <h3>Ecommerce</h3>
+            <p>Reviews, comparativas, demostraciones y educación que acompaña decisiones de compra.</p>
+          </article>
+          <article class="model reveal">
+            <h3>Educación</h3>
+            <p>Autoridad y profundidad que convierten conocimiento gratuito en cursos o programas.</p>
+          </article>
+          <article class="model reveal">
+            <h3>Afiliación</h3>
+            <p>Contenido orientado a intención: “mejor”, “vs”, “review”, “cómo elegir”, “para quién”.</p>
+          </article>
+          <article class="model reveal">
+            <h3>Comunidad</h3>
+            <p>El canal atrae personas que comparten un problema, identidad, profesión o ambición.</p>
+          </article>
+          <article class="model reveal">
+            <h3>Creator Media</h3>
+            <p>La atención es el producto: publicidad, patrocinios, licencias, eventos y propiedad intelectual.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Content-Market Fit</div>
+            <h2>Contenido que puede crecer y producir negocio.</h2>
+          </div>
+          <p>Buscamos la intersección entre lo que sabes, lo que tu audiencia necesita, lo que YouTube puede distribuir
+            y lo que acerca a una relación comercial.</p>
+        </div>
+        <div class="engine">
+          <div class="engine-card reveal">
+            <h3>Los 4 trabajos del contenido</h3>
+            <ul>
+              <li><b style="color:var(--text)">Descubrimiento:</b> atraer personas nuevas.</li>
+              <li><b style="color:var(--text)">Autoridad:</b> demostrar profundidad y criterio.</li>
+              <li><b style="color:var(--text)">Conversión:</b> resolver dudas cercanas a comprar.</li>
+              <li><b style="color:var(--text)">Recurrencia:</b> crear razones para volver.</li>
+            </ul>
+          </div>
+          <div class="engine-card reveal">
+            <h3>El motor editorial</h3>
+            <ul>
+              <li>70% temas comprobados y alineados al core.</li>
+              <li>20% temas cercanos para expandir audiencia.</li>
+              <li>10% experimentos para descubrir nuevos formatos.</li>
+              <li>Idea + título provisional + miniatura antes de producir.</li>
+              <li>Medir CTR, retención, recurrencia y función comercial.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="servicios">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Cómo podemos trabajar</div>
+            <h2>De claridad estratégica a operación continua.</h2>
+          </div>
+          <p>La agencia puede entrar en diferentes momentos: definición inicial, lanzamiento, recuperación de un canal
+            estancado o sistema de crecimiento para un canal establecido.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service reveal">
+            <div class="eyebrow">01 · Strategy</div>
+            <h3 style="margin-top:12px">YouTube Business Audit</h3>
+            <p>Para entender qué negocio debe producir el canal y qué está bloqueando el crecimiento.</p>
+            <ul>
+              <li>Posicionamiento</li>
+              <li>Avatar y Painful Problems</li>
+              <li>Nicho y TAM</li>
+              <li>Oferta y monetización</li>
+              <li>Auditoría de catálogo</li>
+              <li>90-day roadmap</li>
+            </ul>
+            <div class="price">Diagnóstico</div>
+          </article>
+          <article class="service featured reveal">
+            <div class="eyebrow">02 · Build</div>
+            <h3 style="margin-top:12px">Channel Launch System</h3>
+            <p>Para construir un canal nuevo con una tesis clara antes de invertir meses produciendo contenido.</p>
+            <ul>
+              <li>Brand Statement</li>
+              <li>Arquitectura editorial</li>
+              <li>30 ideas priorizadas</li>
+              <li>Formatos y series</li>
+              <li>Packaging inicial</li>
+              <li>Sistema de medición</li>
+            </ul>
+            <div class="price">Lanzamiento</div>
+          </article>
+          <article class="service reveal">
+            <div class="eyebrow">03 · Scale</div>
+            <h3 style="margin-top:12px">YouTube Growth Partner</h3>
+            <p>Para equipos que necesitan estrategia, análisis y optimización recurrente del canal y catálogo.</p>
+            <ul>
+              <li>Research semanal</li>
+              <li>Outlier analysis</li>
+              <li>Packaging tests</li>
+              <li>Retención</li>
+              <li>Optimización evergreen</li>
+              <li>Reporting de negocio</li>
+            </ul>
+            <div class="price">Retainer</div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="whatsapp">
+      <div class="wrap">
+        <div class="whatsapp-cta reveal">
+          <div>
+            <div class="eyebrow">Consultorías y asesorías</div>
+            <h2 style="margin:12px 0 18px">¿Quieres revisar tu canal o construir tu estrategia de YouTube?</h2>
+            <p>Si quieres convertir YouTube en un sistema de autoridad, adquisición y monetización, agenda una
+              conversación inicial por WhatsApp. Revisamos tu situación, el objetivo del canal y el tipo de estrategia
+              que más sentido tiene para tu negocio.</p>
+          </div>
+          <div class="whatsapp-card">
+            <h3>Hablemos por WhatsApp</h3>
+            <p>Ideal para consultorías, auditorías estratégicas, asesorías de canal y acompañamiento para equipos.</p><a
+              class="btn btn-primary"
+              href="https://wa.me/000000000000?text=Hola%2C%20quiero%20consultar%20sobre%20una%20estrategia%20de%20YouTube%20para%20mi%20negocio."
+              target="_blank" rel="noopener noreferrer">Escribir por WhatsApp →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="diagnostico">
+      <div class="wrap">
+        <div class="audit reveal">
+          <div>
+            <div class="eyebrow">Diagnóstico rápido</div>
+            <h2 style="margin:12px 0 20px">¿Qué tipo de sistema necesita tu canal?</h2>
+            <p style="color:var(--muted)">Este diagnóstico no mide cuántos seguidores tienes. Identifica dónde está el
+              cuello de botella entre estrategia, mercado, oferta y contenido.</p>
+            <p style="color:var(--muted);margin-top:26px"><strong style="color:var(--text)">Nuestro
+                principio:</strong><br>“¿Qué función cumple este video dentro del negocio?” es una pregunta más útil que
+              “¿cuántas vistas consiguió?”.</p>
+          </div>
+          <form class="audit-form" id="auditForm">
+            <div class="field"><label>¿En qué etapa estás?</label><select id="stage">
+                <option value="new">Todavía no he comenzado</option>
+                <option value="growing">Canal nuevo / en crecimiento</option>
+                <option value="stuck">Canal establecido pero estancado</option>
+                <option value="business">Ya tengo negocio y quiero entrar en YouTube</option>
+              </select></div>
+            <div class="field"><label>¿Qué quieres monetizar principalmente?</label><select id="money">
+                <option value="service">Servicios / consultoría</option>
+                <option value="product">Producto / SaaS / ecommerce</option>
+                <option value="education">Curso / comunidad / educación</option>
+                <option value="media">Ads / patrocinios / afiliados</option>
+                <option value="unknown">Todavía no lo tengo claro</option>
+              </select></div>
+            <div class="field"><label>¿Tienes claramente definido tu cliente ideal?</label><select id="avatar">
+                <option value="no">No realmente</option>
+                <option value="some">Más o menos</option>
+                <option value="yes">Sí, con bastante precisión</option>
+              </select></div><button class="btn btn-primary" type="submit">Obtener recomendación</button>
+            <div class="result" id="result"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap faq">
+        <div class="section-head reveal" style="grid-template-columns:1fr">
+          <div>
+            <div class="eyebrow">Preguntas frecuentes</div>
+            <h2>Antes de perseguir el algoritmo.</h2>
+          </div>
+        </div>
+        <details class="faq-item reveal">
+          <summary>¿Necesito miles de suscriptores para que YouTube sea rentable?</summary>
+          <p>No. Si el modelo económico depende de servicios, consultoría, SaaS o productos de ticket elevado, una
+            audiencia pequeña pero muy relevante puede tener más valor que una audiencia grande y genérica.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>¿Primero creo contenido y luego pienso qué vender?</summary>
+          <p>En muchos casos hacemos lo contrario: negocio → oferta → audiencia → contenido → distribución. Así
+            reducimos el riesgo de construir una audiencia difícil de monetizar.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>¿Debo elegir un nicho extremadamente pequeño?</summary>
+          <p>No necesariamente. Definimos un core suficientemente claro para crear asociación y relevancia, y luego
+            ampliamos el Total Addressable Market con temas compatibles.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>¿Shorts o videos largos?</summary>
+          <p>Depende de su función. Shorts pueden acelerar descubrimiento; long-form suele ser más potente para
+            profundidad, autoridad, intención y relación. El sistema ideal puede utilizar ambos con objetivos distintos.
+          </p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>¿Qué medimos además de views?</summary>
+          <p>CTR, retención, fuentes de tráfico, nuevos vs. recurrentes, retorno del catálogo, leads, conversiones,
+            conversaciones comerciales y la función de cada video dentro del negocio.</p>
+        </details>
+      </div>
+    </section>
+    <section class="final-cta">
+      <div class="wrap reveal">
+        <div class="eyebrow">YouTube no es el negocio. Es el sistema.</div>
+        <h2>Construye un canal que haga que las personas correctas te descubran, entiendan y confíen en ti.</h2>
+        <p>Empieza por la estrategia. Después hablamos de cámaras, miniaturas, edición y frecuencia.</p><a
+          class="btn btn-primary" href="#whatsapp">Hablar por WhatsApp</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-inner">
+      <div><b style="color:var(--text)">YT Business Studio</b> · nombre de trabajo</div>
+      <div>Estrategia · Posicionamiento · YouTube · Monetización</div>
+    </div>
+  </footer>
+  <script>
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target) } }) }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.getElementById('auditForm').addEventListener('submit', function (e) { e.preventDefault(); const stage = document.getElementById('stage').value; const money = document.getElementById('money').value; const avatar = document.getElementById('avatar').value; const result = document.getElementById('result'); let title = 'Tu prioridad: claridad estratégica.'; let text = 'Antes de aumentar producción, define posicionamiento, avatar, problema, oferta y la función que YouTube cumplirá dentro del negocio.'; if (stage === 'stuck') { title = 'Tu prioridad: auditoría y reactivación.'; text = 'Analizaríamos catálogo, audiencia recurrente, outliers, packaging, retención y videos evergreen antes de aumentar la frecuencia.' } else if (stage === 'business') { title = 'Tu prioridad: convertir expertise en demanda.'; text = 'Ya existe negocio. El trabajo es mapear oferta, cliente ideal y preguntas de compra hacia descubrimiento, autoridad y conversión.' } else if (stage === 'growing') { title = 'Tu prioridad: encontrar repetibilidad.'; text = 'Necesitas identificar patrones entre temas, packaging, retención y audiencia para convertir resultados aislados en un sistema.' } if (avatar === 'no') { text += ' Además, el avatar todavía es demasiado ambiguo: este sería uno de los primeros bloques que resolveríamos.' } if (money === 'unknown') { text += ' También conviene definir el modelo de monetización antes de diseñar la arquitectura editorial.' } result.innerHTML = '<strong style="display:block;margin-bottom:6px">' + title + '</strong><span style="color:var(--muted)">' + text + '</span>'; result.classList.add('show') });
+  </script>
+</body>
+
+</html>
