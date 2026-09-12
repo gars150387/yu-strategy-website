@@ -801,6 +801,82 @@
        }
      }
 
+     .guide-capture {
+       display: grid;
+       grid-template-columns: 1.05fr .95fr;
+       gap: 30px;
+       align-items: center;
+       border: 1px solid var(--line);
+       border-radius: 30px;
+       padding: 38px;
+       background:
+         radial-gradient(circle at 18% 0%, rgba(185, 242, 74, .13), transparent 22rem),
+         linear-gradient(135deg, rgba(117, 216, 178, .09), rgba(255, 255, 255, .025));
+       box-shadow: var(--shadow)
+     }
+
+     .guide-copy p {
+       color: var(--muted);
+       font-size: 1.05rem;
+       margin: 18px 0 0
+     }
+
+     .guide-points {
+       display: grid;
+       gap: 10px;
+       padding: 0;
+       margin: 24px 0 0;
+       list-style: none;
+       color: var(--muted)
+     }
+
+     .guide-points li:before {
+       content: "✓";
+       color: var(--accent);
+       font-weight: 900;
+       margin-right: 10px
+     }
+
+     .guide-card {
+       border: 1px solid rgba(185, 242, 74, .28);
+       border-radius: 24px;
+       padding: 28px;
+       background: rgba(255, 255, 255, .04)
+     }
+
+     .guide-card h3 {
+       margin-bottom: 12px
+     }
+
+     .guide-card p {
+       color: var(--muted);
+       margin: 0 0 22px
+     }
+
+     .guide-meta {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 10px;
+       margin-bottom: 24px
+     }
+
+     .guide-meta span {
+       border: 1px solid var(--line);
+       border-radius: 999px;
+       padding: 7px 10px;
+       color: var(--muted);
+       font-size: .82rem;
+       font-weight: 800;
+       background: rgba(255, 255, 255, .035)
+     }
+
+     .guide-trust {
+       display: block;
+       margin-top: 14px;
+       color: var(--muted);
+       font-size: .85rem
+     }
+
      .social-cards {
        display: grid;
        grid-template-columns: repeat(3, 1fr);
@@ -896,11 +972,12 @@
 
 <body>
   <nav>
-    <div class="wrap nav-inner"><a class="brand" href="#inicio">YT <span>Business</span> Studio</a>
-      <div class="links"><a href="#metodologia">Método</a><a href="#nicho">Nicho</a><a
-          href="#monetizacion">Monetización</a><a href="#servicios">Servicios</a><a href="#whatsapp">WhatsApp</a></div>
-      <a class="btn btn-primary" href="#diagnostico">Diagnosticar mi canal</a>
-    </div>
+      <div class="wrap nav-inner"><a class="brand" href="#inicio">YT <span>Business</span> Studio</a>
+        <div class="links"><a href="#metodologia">Método</a><a href="#nicho">Nicho</a><a
+            href="#monetizacion">Monetización</a><a href="#guias">Guías</a><a href="#servicios">Servicios</a><a href="#whatsapp">WhatsApp</a></div>
+        <a class="btn btn-primary" href="#diagnostico">Diagnosticar mi canal</a>
+      </div>
+
   </nav>
   <main id="inicio">
     <section class="hero">
@@ -1197,6 +1274,36 @@
         </div>
       </div>
     </section>
+    <section id="guias">
+      <div class="wrap">
+        <div class="guide-capture reveal">
+          <div class="guide-copy">
+            <div class="eyebrow">Recurso gratuito</div>
+            <h2 style="margin:12px 0 18px">Descarga la guía para encontrar tu Océano Azul en YouTube.</h2>
+            <p>Una infoguía práctica para pensar tu canal desde posicionamiento, mercado, audiencia y oportunidad de negocio.</p>
+            <ul class="guide-points">
+              <li>Detecta espacios menos competidos.</li>
+              <li>Conecta contenido con demanda real.</li>
+              <li>Define una promesa editorial más clara.</li>
+            </ul>
+          </div>
+
+          <div class="guide-card">
+            <h3>Mapa del Océano Azul para YouTube</h3>
+            <p>Completa el formulario y recibe el enlace de descarga al finalizar.</p>
+            <div class="guide-meta">
+              <span>PDF gratuito</span>
+              <span>Sin spam</span>
+              <span>3 min</span>
+            </div>
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdhFX6agiJSlPEzLLXpzt8sQMJ_KjKjw1_LUrHMLD05Pqjvnw/viewform" target="_blank" rel="noopener noreferrer">
+              Descargar guía gratis →
+            </a>
+            <small class="guide-trust">Usaremos tus datos para enviarte recursos estratégicos sobre YouTube y negocio.</small>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="servicios">
       <div class="wrap">
         <div class="section-head reveal">
@@ -1351,6 +1458,7 @@
         <h2>Construye un canal que haga que las personas correctas te descubran, entiendan y confíen en ti.</h2>
         <p>Empieza por la estrategia. Después hablamos de cámaras, miniaturas, edición y frecuencia.</p><a
           class="btn btn-primary" href="#whatsapp">Hablar por WhatsApp</a>
+        <a class="btn btn-secondary" href="#guias" style="margin-top:14px">Descargar guía gratuita</a>
       </div>
     </section>
   </main>
