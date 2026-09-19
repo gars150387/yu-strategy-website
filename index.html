@@ -985,7 +985,7 @@
       .guide-modal {
         position: relative;
         width: 100%;
-        max-width: 640px;
+        max-width: 520px;
         max-height: 90vh;
         background: var(--panel);
         border: 1px solid var(--line);
@@ -993,7 +993,7 @@
         box-shadow: var(--shadow);
         display: flex;
         flex-direction: column;
-        overflow: hidden
+        overflow-y: auto
       }
 
       .guide-modal-close {
@@ -1017,23 +1017,111 @@
         background: rgba(255, 255, 255, .08)
       }
 
-      .guide-modal-iframe {
-        width: 100%;
-        height: 520px;
-        border: none;
-        flex: 1 1 auto
+      .guide-modal-header {
+        padding: 28px 28px 0
       }
 
-      .guide-modal-confirm {
-        padding: 18px 24px;
-        border-top: 1px solid var(--line);
+      .guide-modal-header h3 {
+        margin: 10px 0 8px
+      }
+
+      .guide-modal-header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: .95rem
+      }
+
+      .guide-modal-form {
+        padding: 20px 28px 28px
+      }
+
+      .guide-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px
+      }
+
+      .guide-form-field {
+        margin-bottom: 14px
+      }
+
+      .guide-form-field label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: .85rem;
+        font-weight: 600;
+        color: var(--text)
+      }
+
+      .guide-form-field input,
+      .guide-form-field select,
+      .guide-form-field textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, .04);
+        color: var(--text);
+        font-size: .92rem;
+        transition: .2s ease
+      }
+
+      .guide-form-field input:focus,
+      .guide-form-field select:focus,
+      .guide-form-field textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(185, 242, 74, .15)
+      }
+
+      .guide-form-field select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23a9b8b2' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        padding-right: 32px
+      }
+
+      .guide-form-field textarea {
+        resize: vertical;
+        min-height: 70px
+      }
+
+      .guide-form-submit {
+        width: 100%;
+        margin-top: 4px
+      }
+
+      .guide-form-privacy {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: .8rem;
         text-align: center
       }
 
-      .guide-modal-confirm p {
-        margin: 0 0 14px;
-        color: var(--muted);
-        font-size: .92rem
+      .guide-form-message {
+        margin-top: 14px;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: .9rem;
+        text-align: center
+      }
+
+      .guide-form-message.success {
+        background: rgba(185, 242, 74, .12);
+        color: var(--accent);
+        border: 1px solid rgba(185, 242, 74, .3)
+      }
+
+      .guide-form-message.error {
+        background: rgba(255, 68, 68, .12);
+        color: #ff6b6b;
+        border: 1px solid rgba(255, 68, 68, .3)
+      }
+
+      .guide-form-submit:disabled {
+        opacity: .6;
+        cursor: not-allowed
       }
 
       /* Download section */
@@ -1620,15 +1708,61 @@
   <div id="guideModal" class="guide-modal-overlay" style="display:none">
     <div class="guide-modal">
       <button class="guide-modal-close" id="guideModalClose">&times;</button>
-      <!-- previous url form: https://docs.google.com/forms/d/e/1FAIpQLSdhFX6agiJSlPEzLLXpzt8sQMJ_KjKjw1_LUrHMLD05Pqjvnw/viewform?embedded=true -->
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSc5rY93wAIBBx-tuXWSAm1qgw1rVZ5cxhoE0cwJKh33aWes9Q/viewform?embedded=true"
-        class="guide-modal-iframe"
-        loading="lazy"
-      >Cargando formulario…</iframe>
-      <div class="guide-modal-confirm">
-        <p>Completa el formulario. Al enviarlo verás el enlace para acceder a todas las infoguias.</p>
+      <div class="guide-modal-header">
+        <div class="eyebrow">Recurso gratuito</div>
+        <h3>Mapa del Océano Azul para YouTube</h3>
+        <p>Completa tus datos para recibir la infoguía y recursos estratégicos.</p>
       </div>
+      <form id="guideForm" class="guide-modal-form">
+        <div class="guide-form-row">
+          <div class="guide-form-field">
+            <label for="guideFirstName">Nombre *</label>
+            <input type="text" id="guideFirstName" name="firstName" required placeholder="Tu nombre">
+          </div>
+          <div class="guide-form-field">
+            <label for="guideLastName">Apellido</label>
+            <input type="text" id="guideLastName" name="lastName" placeholder="Tu apellido">
+          </div>
+        </div>
+        <div class="guide-form-field">
+          <label for="guideEmail">Email *</label>
+          <input type="email" id="guideEmail" name="email" required placeholder="tu@email.com">
+        </div>
+        <div class="guide-form-field">
+          <label for="guideBusiness">Nombre de tu canal o negocio</label>
+          <input type="text" id="guideBusiness" name="business" placeholder="Canal o negocio">
+        </div>
+        <div class="guide-form-field">
+          <label for="guideStage">¿En qué etapa estás? *</label>
+          <select id="guideStage" name="stage" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Todavía no he comenzado">Todavía no he comenzado</option>
+            <option value="Canal nuevo / en crecimiento">Canal nuevo / en crecimiento</option>
+            <option value="Canal establecido pero estancado">Canal establecido pero estancado</option>
+            <option value="Ya tengo negocio y quiero entrar en YouTube">Ya tengo negocio y quiero entrar en YouTube</option>
+          </select>
+        </div>
+        <div class="guide-form-field">
+          <label for="guideMonetization">¿Qué quieres monetizar principalmente? *</label>
+          <select id="guideMonetization" name="monetization" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Servicios / consultoría">Servicios / consultoría</option>
+            <option value="Producto / SaaS / ecommerce">Producto / SaaS / ecommerce</option>
+            <option value="Curso / comunidad / educación">Curso / comunidad / educación</option>
+            <option value="Ads / patrocinios / afiliados">Ads / patrocinios / afiliados</option>
+            <option value="Todavía no lo tengo claro">Todavía no lo tengo claro</option>
+          </select>
+        </div>
+        <div class="guide-form-field">
+          <label for="guideBlocker">¿Cuál es tu mayor bloqueo ahora mismo con YouTube?</label>
+          <textarea id="guideBlocker" name="blocker" rows="3" placeholder="Cuéntanos brevemente..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary guide-form-submit" id="guideSubmitBtn">
+          Enviar y acceder a las infoguias
+        </button>
+        <p class="guide-form-privacy">Usaremos tus datos para enviarte recursos estratégicos sobre YouTube y negocio.</p>
+        <div id="guideFormMessage" class="guide-form-message" style="display:none"></div>
+      </form>
     </div>
   </div>
 
@@ -1642,13 +1776,14 @@
 
     /* Guide download — localStorage gate + modal + downloads section */
     const GUIDE_KEY = 'infoguia_registered';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzW5ITxdQXjwfokN9bS67oqqHUaOKYS7p0Kq7GbBP_jJDIsTR_J86R0yivAuj09H19olA/exec';
 
     function isGuideRegistered() {
       return localStorage.getItem(GUIDE_KEY) === 'true';
     }
 
     function goToDownloads() {
-      const section = document.getElementById('descargas');
+      var section = document.getElementById('descargas');
       if (section.style.display === 'none') {
         section.style.display = '';
       }
@@ -1664,6 +1799,57 @@
       document.getElementById('guideModal').style.display = 'none';
       document.body.style.overflow = '';
     }
+
+    function showFormMessage(msg, type) {
+      var el = document.getElementById('guideFormMessage');
+      el.textContent = msg;
+      el.className = 'guide-form-message ' + type;
+      el.style.display = 'block';
+    }
+
+    function hideFormMessage() {
+      document.getElementById('guideFormMessage').style.display = 'none';
+    }
+
+    /* Guide form submission via Apps Script */
+    document.getElementById('guideForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      hideFormMessage();
+
+      var submitBtn = document.getElementById('guideSubmitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      var form = document.getElementById('guideForm');
+      var data = {
+        firstName: form.firstName.value.trim(),
+        lastName: form.lastName.value.trim(),
+        email: form.email.value.trim().toLowerCase(),
+        business: form.business.value.trim(),
+        stage: form.stage.value,
+        monetization: form.monetization.value,
+        blocker: form.blocker.value.trim()
+      };
+
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams(data)
+      })
+      .then(function () {
+        localStorage.setItem(GUIDE_KEY, 'true');
+        showFormMessage('¡Listo! Ya puedes acceder a las infoguias.', 'success');
+        setTimeout(function () {
+          closeGuideModal();
+          goToDownloads();
+        }, 1200);
+      })
+      .catch(function () {
+        showFormMessage('Ocurrió un error. Intenta de nuevo.', 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar y acceder a las infoguias';
+      });
+    });
 
     document.getElementById('guideDownloadBtn').addEventListener('click', function (e) {
       e.preventDefault();
@@ -1686,16 +1872,8 @@
       }
     });
 
-    /* Init: detect ?lead=ok from Google Form confirmation link */
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('lead') === 'ok') {
-      localStorage.setItem(GUIDE_KEY, 'true');
-      window.history.replaceState({}, '', window.location.pathname + window.location.hash);
-      document.getElementById('descargas').style.display = '';
-      setTimeout(function () {
-        document.getElementById('descargas').scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else if (isGuideRegistered()) {
+    /* Init: show #descargas only if registered */
+    if (isGuideRegistered()) {
       document.getElementById('descargas').style.display = '';
     } else {
       document.getElementById('descargas').style.display = 'none';
