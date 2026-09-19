@@ -1,5 +1,5 @@
 function createInfoguiaLeadForm() {
-  const guideUrl = 'https://TU-DOMINIO.COM/ASSETS/infoguias/Infoguia-Mapa-del-Oceano-Azul-YouTube.pdf';
+  const downloadsUrl = 'https://yt-business-studio.netlify.app/#descargas?lead=ok';
 
   const form = FormApp.create('Descarga gratuita - Mapa del Océano Azul para YouTube');
 
@@ -53,8 +53,8 @@ function createInfoguiaLeadForm() {
 
   form.setConfirmationMessage(
     'Gracias por completar el formulario.\n\n' +
-    'Puedes descargar la infoguía aquí:\n' +
-    guideUrl + '\n\n' +
+    'Haz clic en el siguiente enlace para acceder a todas las infoguias:\n' +
+    downloadsUrl + '\n\n' +
     'También recibirás recursos estratégicos sobre YouTube, posicionamiento y monetización.'
   );
 
@@ -64,4 +64,25 @@ function createInfoguiaLeadForm() {
   Logger.log('Formulario público: ' + form.getPublishedUrl());
   Logger.log('Editar formulario: ' + form.getEditUrl());
   Logger.log('Hoja de respuestas: ' + spreadsheet.getUrl());
+}
+
+/**
+ * Actualiza solo el mensaje de confirmación del form existente.
+ * Ejecutar una sola vez desde Apps Script Editor.
+ */
+function updateFormConfirmationMessage() {
+  const FORM_ID = '1FAIpQLSdhFX6agiJSlPEzLLXpzt8sQMJ_KjKjw1_LUrHMLD05Pqjvnw';
+  const downloadsUrl = 'https://yt-business-studio.netlify.app/#descargas?lead=ok';
+
+  const form = FormApp.openById(FORM_ID);
+
+  form.setConfirmationMessage(
+    'Gracias por completar el formulario.\n\n' +
+    'Haz clic en el siguiente enlace para acceder a todas las infoguias:\n' +
+    downloadsUrl + '\n\n' +
+    'También recibirás recursos estratégicos sobre YouTube, posicionamiento y monetización.'
+  );
+
+  Logger.log('Mensaje de confirmación actualizado');
+  Logger.log('Formulario: ' + form.getPublishedUrl());
 }

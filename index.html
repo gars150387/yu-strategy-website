@@ -959,15 +959,136 @@
          grid-template-columns: 1fr
        }
 
-       .hero-actions {
-         flex-direction: column
-       }
+        .hero-actions {
+          flex-direction: column
+        }
 
-       .yt-btn-mobile-full {
-         width: 100%
-       }
-     }
-   </style>
+        .yt-btn-mobile-full {
+          width: 100%
+        }
+      }
+
+      /* Guide Modal */
+      .guide-modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(6, 16, 13, .85);
+        backdrop-filter: blur(8px);
+        padding: 20px;
+        animation: fadeIn .25s ease
+      }
+
+      .guide-modal {
+        position: relative;
+        width: 100%;
+        max-width: 640px;
+        max-height: 90vh;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden
+      }
+
+      .guide-modal-close {
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        z-index: 2;
+        background: none;
+        border: none;
+        color: var(--muted);
+        font-size: 1.6rem;
+        cursor: pointer;
+        line-height: 1;
+        padding: 4px 8px;
+        border-radius: 8px;
+        transition: .2s ease
+      }
+
+      .guide-modal-close:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, .08)
+      }
+
+      .guide-modal-iframe {
+        width: 100%;
+        height: 520px;
+        border: none;
+        flex: 1 1 auto
+      }
+
+      .guide-modal-confirm {
+        padding: 18px 24px;
+        border-top: 1px solid var(--line);
+        text-align: center
+      }
+
+      .guide-modal-confirm p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: .92rem
+      }
+
+      /* Download section */
+      .download-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 20px
+      }
+
+      .download-card {
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 30px;
+        background: var(--panel);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        transition: .25s ease
+      }
+
+      .download-card:hover {
+        border-color: rgba(185, 242, 74, .35);
+        transform: translateY(-2px)
+      }
+
+      .download-card-badge {
+        display: inline-flex;
+        align-self: flex-start;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 5px 12px;
+        color: var(--muted);
+        font-size: .78rem;
+        font-weight: 800
+      }
+
+      .download-card h3 {
+        margin: 0
+      }
+
+      .download-card p {
+        color: var(--muted);
+        margin: 0;
+        flex: 1
+      }
+
+      .download-card-locked {
+        opacity: .65
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0 }
+        to { opacity: 1 }
+      }
+    </style>
 </head>
 
 <body>
@@ -1296,11 +1417,38 @@
               <span>Sin spam</span>
               <span>3 min</span>
             </div>
-            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdhFX6agiJSlPEzLLXpzt8sQMJ_KjKjw1_LUrHMLD05Pqjvnw/viewform" target="_blank" rel="noopener noreferrer">
+            <a class="btn btn-primary" href="#descargas" id="guideDownloadBtn">
               Descargar guía gratis →
             </a>
             <small class="guide-trust">Usaremos tus datos para enviarte recursos estratégicos sobre YouTube y negocio.</small>
           </div>
+        </div>
+      </div>
+    </section>
+    <section id="descargas" style="display:none">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Tus infoguias</div>
+            <h2>Descarga los recursos que te ayudarán a crecer.</h2>
+          </div>
+          <p>Guías prácticas para cada etapa de tu canal de YouTube.</p>
+        </div>
+        <div class="download-grid">
+          <article class="download-card reveal">
+            <div class="download-card-badge">PDF · 12 páginas</div>
+            <h3>Mapa del Océano Azul para YouTube</h3>
+            <p>Encuentra espacios menos competidos, conecta contenido con demanda real y define una promesa editorial clara.</p>
+            <a class="btn btn-primary" href="ASSETS/infoguias/Infoguia-Mapa-del-Oceano-Azul-YouTube.pdf" target="_blank" rel="noopener noreferrer">
+              Descargar PDF →
+            </a>
+          </article>
+          <article class="download-card download-card-locked reveal">
+            <div class="download-card-badge">Próximamente</div>
+            <h3>Hablemos de YouTube: Métricas que importan</h3>
+            <p>Entiende qué métricas realmente importan para tu negocio y cuáles puedes ignorar.</p>
+            <button class="btn btn-secondary" disabled>Disponible pronto</button>
+          </article>
         </div>
       </div>
     </section>
@@ -1458,7 +1606,7 @@
         <h2>Construye un canal que haga que las personas correctas te descubran, entiendan y confíen en ti.</h2>
         <p>Empieza por la estrategia. Después hablamos de cámaras, miniaturas, edición y frecuencia.</p><a
           class="btn btn-primary" href="#whatsapp">Hablar por WhatsApp</a>
-        <a class="btn btn-secondary" href="#guias" style="margin-top:14px">Descargar guía gratuita</a>
+        <a class="btn btn-secondary" href="#descargas" id="finalCtaDownload" style="margin-top:14px">Descargar guía gratuita</a>
       </div>
     </section>
   </main>
@@ -1468,10 +1616,89 @@
       <div>Estrategia · Posicionamiento · YouTube · Monetización</div>
     </div>
   </footer>
+
+  <div id="guideModal" class="guide-modal-overlay" style="display:none">
+    <div class="guide-modal">
+      <button class="guide-modal-close" id="guideModalClose">&times;</button>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdhFX6agiJSlPEzLLXpzt8sQMJ_KjKjw1_LUrHMLD05Pqjvnw/viewform?embedded=true"
+        class="guide-modal-iframe"
+        loading="lazy"
+      >Cargando formulario…</iframe>
+      <div class="guide-modal-confirm">
+        <p>Completa el formulario. Al enviarlo verás el enlace para acceder a todas las infoguias.</p>
+      </div>
+    </div>
+  </div>
+
   <script>
+    /* Intersection Observer — reveal on scroll */
     const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target) } }) }, { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* Audit form */
     document.getElementById('auditForm').addEventListener('submit', function (e) { e.preventDefault(); const stage = document.getElementById('stage').value; const money = document.getElementById('money').value; const avatar = document.getElementById('avatar').value; const result = document.getElementById('result'); let title = 'Tu prioridad: claridad estratégica.'; let text = 'Antes de aumentar producción, define posicionamiento, avatar, problema, oferta y la función que YouTube cumplirá dentro del negocio.'; if (stage === 'stuck') { title = 'Tu prioridad: auditoría y reactivación.'; text = 'Analizaríamos catálogo, audiencia recurrente, outliers, packaging, retención y videos evergreen antes de aumentar la frecuencia.' } else if (stage === 'business') { title = 'Tu prioridad: convertir expertise en demanda.'; text = 'Ya existe negocio. El trabajo es mapear oferta, cliente ideal y preguntas de compra hacia descubrimiento, autoridad y conversión.' } else if (stage === 'growing') { title = 'Tu prioridad: encontrar repetibilidad.'; text = 'Necesitas identificar patrones entre temas, packaging, retención y audiencia para convertir resultados aislados en un sistema.' } if (avatar === 'no') { text += ' Además, el avatar todavía es demasiado ambiguo: este sería uno de los primeros bloques que resolveríamos.' } if (money === 'unknown') { text += ' También conviene definir el modelo de monetización antes de diseñar la arquitectura editorial.' } result.innerHTML = '<strong style="display:block;margin-bottom:6px">' + title + '</strong><span style="color:var(--muted)">' + text + '</span>'; result.classList.add('show') });
+
+    /* Guide download — localStorage gate + modal + downloads section */
+    const GUIDE_KEY = 'infoguia_registered';
+
+    function isGuideRegistered() {
+      return localStorage.getItem(GUIDE_KEY) === 'true';
+    }
+
+    function goToDownloads() {
+      const section = document.getElementById('descargas');
+      if (section.style.display === 'none') {
+        section.style.display = '';
+      }
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openGuideModal() {
+      document.getElementById('guideModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGuideModal() {
+      document.getElementById('guideModal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('guideDownloadBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+      if (isGuideRegistered()) {
+        goToDownloads();
+      } else {
+        openGuideModal();
+      }
+    });
+
+    document.getElementById('guideModalClose').addEventListener('click', closeGuideModal);
+    document.getElementById('guideModal').addEventListener('click', function (e) {
+      if (e.target === this) closeGuideModal();
+    });
+
+    document.getElementById('finalCtaDownload').addEventListener('click', function (e) {
+      if (!isGuideRegistered()) {
+        e.preventDefault();
+        openGuideModal();
+      }
+    });
+
+    /* Init: detect ?lead=ok from Google Form confirmation link */
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('lead') === 'ok') {
+      localStorage.setItem(GUIDE_KEY, 'true');
+      window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+      document.getElementById('descargas').style.display = '';
+      setTimeout(function () {
+        document.getElementById('descargas').scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else if (isGuideRegistered()) {
+      document.getElementById('descargas').style.display = '';
+    } else {
+      document.getElementById('descargas').style.display = 'none';
+    }
   </script>
 </body>
 
