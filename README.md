@@ -24,6 +24,7 @@ Or use a local static server / Live Server extension if you want browser auto-re
 |------|---------|
 | Main page | Single-file static landing page in `index.html` |
 | Ticker | Continuous horizontal ticker without a visible gap |
+| YouTube channels | Own-channel episodes and client podcast work showcased as proof of strategy |
 | Lead capture | Quick diagnostic form with an in-page recommendation |
 | WhatsApp CTA | Dedicated section for consultancies and advisory conversations |
 | Responsive layout | Mobile-friendly grid changes through CSS media queries |

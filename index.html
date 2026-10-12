@@ -1179,6 +1179,141 @@
         opacity: .65
       }
 
+      .channel-showcase {
+        display: grid;
+        grid-template-columns: .95fr 1.05fr;
+        gap: 18px;
+        align-items: stretch
+      }
+
+      .channel-card {
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 30px;
+        background: var(--panel);
+        display: flex;
+        flex-direction: column;
+        gap: 22px
+      }
+
+      .channel-card.featured {
+        background:
+          radial-gradient(circle at 20% 0%, rgba(255, 0, 0, .11), transparent 22rem),
+          linear-gradient(180deg, rgba(185, 242, 74, .07), rgba(255, 255, 255, .025));
+        border-color: rgba(185, 242, 74, .28)
+      }
+
+      .channel-label {
+        display: inline-flex;
+        align-self: flex-start;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 11px;
+        color: var(--accent);
+        font-size: .76rem;
+        font-weight: 900;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, .035)
+      }
+
+      .channel-card p {
+        color: var(--muted);
+        margin: 0
+      }
+
+      .episode-list {
+        display: grid;
+        gap: 10px;
+        margin-top: auto
+      }
+
+      .episode-link {
+        display: grid;
+        grid-template-columns: 42px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        padding: 12px;
+        background: rgba(255, 255, 255, .03);
+        color: var(--text);
+        transition: .2s ease
+      }
+
+      .episode-link:hover {
+        border-color: rgba(185, 242, 74, .35);
+        background: rgba(255, 255, 255, .055);
+        transform: translateY(-1px)
+      }
+
+      .episode-index {
+        width: 42px;
+        height: 42px;
+        border-radius: 13px;
+        display: grid;
+        place-items: center;
+        background: rgba(255, 0, 0, .13);
+        color: #ff6b6b;
+        font-weight: 900
+      }
+
+      .episode-link b {
+        display: block;
+        line-height: 1.2
+      }
+
+      .episode-link small {
+        display: block;
+        color: var(--muted);
+        margin-top: 3px
+      }
+
+      .client-work {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0;
+        margin: 0;
+        list-style: none
+      }
+
+      .client-work li {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 12px;
+        color: var(--muted);
+        background: rgba(255, 255, 255, .025);
+        font-size: .92rem
+      }
+
+      .client-work li:before {
+        content: "✓";
+        color: var(--accent);
+        font-weight: 900;
+        margin-right: 8px
+      }
+
+      @media(max-width:980px) {
+        .channel-showcase {
+          grid-template-columns: 1fr
+        }
+      }
+
+      @media(max-width:640px) {
+        .client-work {
+          grid-template-columns: 1fr
+        }
+
+        .episode-link {
+          grid-template-columns: 38px 1fr;
+        }
+
+        .episode-link span:last-child {
+          display: none
+        }
+      }
+
       @keyframes fadeIn {
         from { opacity: 0 }
         to { opacity: 1 }
@@ -1190,7 +1325,7 @@
   <nav>
       <div class="wrap nav-inner"><a class="brand" href="#inicio">YT <span>Business</span> Studio</a>
         <div class="links"><a href="#metodologia">Método</a><a href="#nicho">Nicho</a><a
-            href="#monetizacion">Monetización</a><a href="#guias">Guías</a><a href="#servicios">Servicios</a><a href="#whatsapp">WhatsApp</a></div>
+            href="#monetizacion">Monetización</a><a href="#canales">Canales</a><a href="#guias">Guías</a><a href="#servicios">Servicios</a><a href="#whatsapp">WhatsApp</a></div>
         <a class="btn btn-primary" href="#diagnostico">Diagnosticar mi canal</a>
       </div>
 
@@ -1487,6 +1622,86 @@
             <p>Espacio de conversación, preguntas, recursos y aprendizaje colectivo para quienes están construyendo o escalando su canal.</p>
             <a class="btn-social" href="https://whatsapp.com/channel/0029VbE0gDl3QxRvfBFaq81D?utm_source=website" target="_blank" rel="noopener noreferrer">Unirme a la comunidad →</a>
           </div>
+        </div>
+      </div>
+    </section>
+    <section id="canales">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Canales en acción</div>
+            <h2>El criterio se demuestra publicando, no solo hablando de estrategia.</h2>
+          </div>
+          <p>Estos episodios muestran dos frentes complementarios: el canal propio, donde explicamos YouTube como herramienta de negocio, y un canal de cliente donde participamos en la planificación, estructura editorial y optimización de cada lanzamiento.</p>
+        </div>
+        <div class="channel-showcase">
+          <article class="channel-card featured reveal">
+            <span class="channel-label">Canal propio</span>
+            <div>
+              <h3>Estrategia de negocio con YouTube como herramienta</h3>
+              <p>Contenido propio para explicar cómo pensar YouTube desde posicionamiento, autoridad, demanda y monetización.</p>
+            </div>
+            <div class="episode-list" aria-label="Episodios del canal propio">
+              <a class="episode-link" href="https://www.youtube.com/watch?v=jyLfAlxbHps&amp;t=996s" target="_blank" rel="noopener noreferrer">
+                <span class="episode-index">01</span>
+                <span><b>Episodio estratégico</b><small>YouTube como herramienta de negocio</small></span>
+                <span>Ver →</span>
+              </a>
+              <a class="episode-link" href="https://www.youtube.com/watch?v=_y3CGtIc5Xo&amp;t=388s" target="_blank" rel="noopener noreferrer">
+                <span class="episode-index">02</span>
+                <span><b>Episodio estratégico</b><small>Contenido, autoridad y decisiones comerciales</small></span>
+                <span>Ver →</span>
+              </a>
+              <a class="episode-link" href="https://www.youtube.com/watch?v=OO6ElzRojUU&amp;t=211s" target="_blank" rel="noopener noreferrer">
+                <span class="episode-index">03</span>
+                <span><b>Episodio estratégico</b><small>Canal, negocio y sistema editorial</small></span>
+                <span>Ver →</span>
+              </a>
+            </div>
+          </article>
+          <article class="channel-card reveal">
+            <span class="channel-label">Canal de cliente</span>
+            <div>
+              <h3>Gustavo Herrera · Caminando con Gustavo Podcast</h3>
+              <p>Participación en planificación estratégica, estructura de entrevista, investigación, lanzamiento y optimización de packaging para episodios del podcast.</p>
+            </div>
+            <ul class="client-work" aria-label="Intervención en el canal de cliente">
+              <li>Planificación estratégica</li>
+              <li>Estructura de entrevista</li>
+              <li>Investigación de invitados y preguntas</li>
+              <li>Programación de lanzamiento</li>
+              <li>Descripción del video</li>
+              <li>Miniaturas con A/B testing</li>
+              <li>Títulos con A/B testing</li>
+            </ul>
+            <div class="episode-list" aria-label="Episodios del canal de cliente">
+              <a class="episode-link" href="https://www.youtube.com/watch?v=7rkEUNr3eVQ" target="_blank" rel="noopener noreferrer">
+                <span class="episode-index">01</span>
+                <span><b>Episodio del cliente</b><small>Caminando con Gustavo Podcast</small></span>
+                <span>Ver →</span>
+              </a>
+              <a class="episode-link" href="https://www.youtube.com/watch?v=gCYAmh4Q5W8&amp;t=393s" target="_blank" rel="noopener noreferrer">
+                <span class="episode-index">02</span>
+                <span><b>Episodio del cliente</b><small>Caminando con Gustavo Podcast</small></span>
+                <span>Ver →</span>
+              </a>
+              <a class="episode-link" href="https://www.youtube.com/watch?v=MwyRhvYoEQM&amp;t=781s" target="_blank" rel="noopener noreferrer">
+                <span class="episode-index">03</span>
+                <span><b>Episodio del cliente</b><small>Caminando con Gustavo Podcast</small></span>
+                <span>Ver →</span>
+              </a>
+              <a class="episode-link" href="https://www.youtube.com/watch?v=Fdca353Xcq8&amp;t=731s" target="_blank" rel="noopener noreferrer">
+                <span class="episode-index">04</span>
+                <span><b>Episodio del cliente</b><small>Caminando con Gustavo Podcast</small></span>
+                <span>Ver →</span>
+              </a>
+              <a class="episode-link" href="https://www.youtube.com/watch?v=qfo2QqX4wac" target="_blank" rel="noopener noreferrer">
+                <span class="episode-index">05</span>
+                <span><b>Episodio del cliente</b><small>Caminando con Gustavo Podcast</small></span>
+                <span>Ver →</span>
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
